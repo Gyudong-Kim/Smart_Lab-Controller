@@ -144,7 +144,7 @@ void controller(String message) {
     delay(1000);
     MyLG_Aircondition.sendCommandAndParameter('t', temp);
     delay(1000);
-    MyLG_Aircondition.sendCommandAndParameter('f', 3);
+    MyLG_Aircondition.sendCommandAndParameter('f', 2);
     Serial.println("===> Air Conditioner Start");
   } else if(doc2["code"] == "C_M_002") { // OFF
     MyLG_Aircondition.sendCommandAndParameter('0', 0);
