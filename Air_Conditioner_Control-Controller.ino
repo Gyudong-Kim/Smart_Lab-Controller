@@ -135,16 +135,21 @@ void serialize_json() {
 }
 
 void controller(String message) {
-  StaticJsonDocument<64> doc2;
+  StaticJsonDocument<128> doc2;
   deserializeJson(doc2, message); // 문자열을 JSON형식으로 변환
   
   if(doc2["code"] == "C_M_001") {        // ON
     int temp = doc2["temp"];
+    int flow = doc2["flow"];
+
+    Serial.println(temp);
+    Serial.println(flow);
+
     MyLG_Aircondition.sendCommandAndParameter('1', 0);
     delay(1000);
     MyLG_Aircondition.sendCommandAndParameter('t', temp);
     delay(1000);
-    MyLG_Aircondition.sendCommandAndParameter('f', 2);
+    MyLG_Aircondition.sendCommandAndParameter('f', flow);
     Serial.println("===> Air Conditioner Start");
   } else if(doc2["code"] == "C_M_002") { // OFF
     MyLG_Aircondition.sendCommandAndParameter('0', 0);
