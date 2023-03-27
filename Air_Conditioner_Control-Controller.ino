@@ -5,12 +5,12 @@
 #include "arduino_secrets.h"
 
 #define INFO
-#include "PinDefinitionsAndMore.h"
 #include <IRremote.hpp>
 #include "ac_LG.hpp"
 
 #define DHTPIN D2
 #define DHTTYPE DHT11
+#define IR_SEND_PIN D6
 
 const char* ssid = SSID;
 const char* password = PASSWORD;
@@ -33,7 +33,7 @@ void setup() {
   client.setCallback(callback);
 
   // LG 에어컨 IR LED 세팅
-  IrSender.begin();
+  IrSender.begin(IR_SEND_PIN);
   Serial.print("Ready to send IR signals at Pin: ");
   Serial.println(IR_SEND_PIN);
   MyLG_Aircondition.setType(LG_IS_WALL_TYPE);
