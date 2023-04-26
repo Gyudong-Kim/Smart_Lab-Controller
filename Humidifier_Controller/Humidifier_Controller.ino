@@ -87,7 +87,7 @@ void reconnect() {
 }
 
 void controller(String message) {
-  StaticJsonDocument<32> doc;
+  StaticJsonDocument<64> doc;
   deserializeJson(doc, message); // 문자열을 JSON형식으로 변환
 
   if(doc["code"] == "C_M_003") {
