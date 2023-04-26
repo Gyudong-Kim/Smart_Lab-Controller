@@ -3,12 +3,21 @@
 #include <ArduinoJson.h>
 #include "arduino_secrets.h"
 
-void setup() {
-  // put your setup code here, to run once:
+#define RELAY D4
 
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(RELAY, OUTPUT);
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
+  digitalWrite(RELAY, HIGH);
+  delay(5000);
+  digitalWrite(RELAY, LOW);
+  delay(5000);
+}
 
+void controller(String message) {
+  // 
 }
